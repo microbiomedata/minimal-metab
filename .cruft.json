@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/turbomam/examples-first-cookiecutter",
+  "commit": "5b929d90c96c24a3484f0632ad1243861362fe50",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "minimal-metab",
+      "__project_slug": "minimal_metab",
+      "github_org": "microbiomedata",
+      "__source_path": "src/minimal_metab/schema/minimal_metab.yaml",
+      "project_description": "A LinkML cookiecutter repo for modelling metabolomics from the ground up",
+      "full_name": "James Tessmer",
+      "email": "james.tessmer@pnnl.gov",
+      "__author": "James Tessmer <james.tessmer@pnnl.gov>",
+      "license": "MIT",
+      "main_schema_class": "SampleOperations",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/turbomam/examples-first-cookiecutter"
+    }
+  },
+  "directory": null
+}
