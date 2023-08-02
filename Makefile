@@ -105,13 +105,39 @@ gen-examples:
 # generates all project files
 
 gen-project: $(PYMODEL)
-	$(RUN) gen-project ${GEN_PARGS} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+	$(RUN) gen-project ${GEN_PARGS} \
+		--exclude owl \
+		--exclude shacl \
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
+## issue #1
+
+#Traceback (most recent call last):
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/bin/gen-project", line 8, in <module>
+#    sys.exit(cli())
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1157, in __call__
+#    return self.main(*args, **kwargs)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1078, in main
+#    rv = self.invoke(ctx)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1434, in invoke
+#    return ctx.invoke(self.callback, **ctx.params)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 783, in invoke
+#    return __callback(*args, **kwargs)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 260, in cli
+#    gen.generate(yamlfile, project_config)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 158, in generate
+#    gen_dump = gen.serialize(**serialize_args)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/shaclgen.py", line 41, in serialize
+#    data = g.serialize(
+#AttributeError: 'str' object has no attribute 'decode'
 
 test: test-schema test-python test-examples
 
 test-schema:
-	$(RUN) gen-project ${GEN_PARGS} -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project ${GEN_PARGS} \
+		--exclude owl \
+		--exclude shacl \
+		-d tmp $(SOURCE_SCHEMA_PATH) && mv tmp/*.py $(PYMODEL)
 
 test-python:
 	$(RUN) python -m unittest discover
@@ -171,7 +197,8 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
+# shacl owl issue #1
+PROJECT_FOLDERS = sqlschema shex  protobuf prefixmap jsonschema jsonld graphql excel
 git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init
@@ -193,7 +220,7 @@ clean:
 	rm -rf tmp
 	rm -fr docs/*
 
-target/usage_template.tsv: src/minimal_metab/schema/minimal_metab.yaml
+target/usage_template.tsv: src/minimal_metab/schema/minimal_metab.yaml # deprecated now by ??? from schemasheets
 	mkdir -p $(dir $@)
 	$(RUN) generate-and-populate-template \
 		 --base-class slot_definition \
@@ -204,23 +231,13 @@ target/usage_template.tsv: src/minimal_metab/schema/minimal_metab.yaml
 		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
 		 --source-schema-path $<
 
+
 project/json/minimal_metab.json: src/minimal_metab/schema/minimal_metab.yaml
 	mkdir -p $(@D)
 	$(RUN) gen-linkml \
 		--format json  \
 		--materialize-attributes \
 		--materialize-patterns $< > $@
-
-target/usage_template.tsv: src/minimal_metab/schema/minimal_metab.yaml
-	mkdir -p $(dir $@)
-	$(RUN) generate_and_populate_template \
-		 --base-class slot_definition \
-		 --columns-to-insert class \
-		 --columns-to-insert slot \
-		 --destination-template $@ \
-		 --meta-model-excel-file target/meta.xlsx \
-		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
-		 --source-schema-path $<
 
 include project.Makefile
 

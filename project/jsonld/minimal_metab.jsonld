@@ -1,7 +1,7 @@
 {
-  "name": "minimal-metab",
+  "name": "minimal_metab",
   "description": "A LinkML cookiecutter repo for modelling metabolomics from the ground up",
-  "title": "minimal-metab",
+  "title": "minimal metabolomics LinkML model",
   "see_also": [
     "https://microbiomedata.github.io/minimal-metab"
   ],
@@ -18,18 +18,6 @@
     {
       "prefix_prefix": "linkml",
       "prefix_reference": "https://w3id.org/linkml/"
-    },
-    {
-      "prefix_prefix": "biolink",
-      "prefix_reference": "https://w3id.org/biolink/"
-    },
-    {
-      "prefix_prefix": "schema",
-      "prefix_reference": "http://schema.org/"
-    },
-    {
-      "prefix_prefix": "PATO",
-      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
     },
     {
       "prefix_prefix": "example",
@@ -295,35 +283,6 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/PersonStatus",
-      "notes": [
-        "redundant text properties are currently required for building a DataHarmonizer menu"
-      ],
-      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
       "name": "id",
@@ -377,57 +336,21 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/primary_email",
-      "description": "The main email address of a person",
+      "name": "has_input",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_input",
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
-      "range": "string",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_input",
+      "range": "NamedThing",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/birth_date",
-      "description": "Date on which a person is born",
+      "name": "has_output",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_output",
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/age_in_years",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/vital_status",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
-      "range": "PersonStatus",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_output",
+      "range": "NamedThing",
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
@@ -443,28 +366,6 @@
       "range": "SampleOperations",
       "inlined": true,
       "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "SampleOperations_primary_email",
-      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "is_a": "primary_email",
-      "domain": "SampleOperations",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
-      "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
       "@type": "SlotDefinition"
     }
   ],
@@ -495,10 +396,7 @@
       "slots": [
         "id",
         "name",
-        "description",
-        "SampleOperations_primary_email",
-        "age_in_years",
-        "vital_status"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/microbiomedata/minimal-metab/SampleOperations",
@@ -530,9 +428,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "minimal_metab.yaml",
-  "source_file_date": "2023-08-02T14:53:51",
-  "source_file_size": 2609,
-  "generation_date": "2023-08-02T14:54:39",
+  "source_file_date": "2023-08-02T16:26:15",
+  "source_file_size": 1587,
+  "generation_date": "2023-08-02T16:55:21",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/minimal_metab.context.jsonld",

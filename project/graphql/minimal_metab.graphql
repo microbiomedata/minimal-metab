@@ -10,9 +10,6 @@ type SampleOperations
     id: Uriorcurie!
     name: String
     description: String
-    primaryEmail: String
-    ageInYears: Integer
-    vitalStatus: PersonStatus
   }
 
 type SampleOperationsCollection

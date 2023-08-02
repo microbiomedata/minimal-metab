@@ -1,0 +1,14 @@
+@prefix example: <https://example.org/> .
+@prefix minimal_metab: <https://w3id.org/microbiomedata/minimal-metab/> .
+@prefix schema1: <http://schema.org/> .
+
+example:SampleOperations001 a minimal_metab:SampleOperations ;
+    schema1:name "foo bar" .
+
+example:SampleOperations002 a minimal_metab:SampleOperations ;
+    schema1:name "foo bar" .
+
+[] a minimal_metab:SampleOperationsCollection ;
+    minimal_metab:entries example:SampleOperations001,
+        example:SampleOperations002 .
+

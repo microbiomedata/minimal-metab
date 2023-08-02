@@ -1,0 +1,5 @@
+@prefix example: <https://example.org/> .
+@prefix minimal_metab: <https://w3id.org/microbiomedata/minimal-metab/> .
+
+example:SampleOperations001 a minimal_metab:SampleOperations .
+
