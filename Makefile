@@ -110,24 +110,26 @@ gen-project: $(PYMODEL)
 		--exclude shacl \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-Traceback (most recent call last):
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/bin/gen-project", line 8, in <module>
-    sys.exit(cli())
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1157, in __call__
-    return self.main(*args, **kwargs)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1078, in main
-    rv = self.invoke(ctx)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1434, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 783, in invoke
-    return __callback(*args, **kwargs)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 260, in cli
-    gen.generate(yamlfile, project_config)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 158, in generate
-    gen_dump = gen.serialize(**serialize_args)
-  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/shaclgen.py", line 41, in serialize
-    data = g.serialize(
-AttributeError: 'str' object has no attribute 'decode'
+## issue #1
+
+#Traceback (most recent call last):
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/bin/gen-project", line 8, in <module>
+#    sys.exit(cli())
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1157, in __call__
+#    return self.main(*args, **kwargs)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1078, in main
+#    rv = self.invoke(ctx)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 1434, in invoke
+#    return ctx.invoke(self.callback, **ctx.params)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/click/core.py", line 783, in invoke
+#    return __callback(*args, **kwargs)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 260, in cli
+#    gen.generate(yamlfile, project_config)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/projectgen.py", line 158, in generate
+#    gen_dump = gen.serialize(**serialize_args)
+#  File "/home/mark/.cache/pypoetry/virtualenvs/minimal-metab--2GObgSZ-py3.9/lib/python3.9/site-packages/linkml/generators/shaclgen.py", line 41, in serialize
+#    data = g.serialize(
+#AttributeError: 'str' object has no attribute 'decode'
 
 test: test-schema test-python test-examples
 
