@@ -1,0 +1,371 @@
+{
+  "name": "minimal_metab",
+  "description": "A LinkML cookiecutter repo for modelling metabolomics from the ground up",
+  "title": "minimal metabolomics LinkML model",
+  "see_also": [
+    "https://microbiomedata.github.io/minimal-metab"
+  ],
+  "id": "https://w3id.org/microbiomedata/minimal-metab",
+  "license": "MIT",
+  "prefixes": {
+    "minimal_metab": {
+      "prefix_prefix": "minimal_metab",
+      "prefix_reference": "https://w3id.org/microbiomedata/minimal-metab/"
+    },
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "example": {
+      "prefix_prefix": "example",
+      "prefix_reference": "https://example.org/"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    }
+  },
+  "default_prefix": "minimal_metab",
+  "default_range": "string",
+  "types": {
+    "string": {
+      "name": "string",
+      "description": "A character string",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
+    "integer": {
+      "name": "integer",
+      "description": "An integer",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "xsd:integer"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    },
+    "float": {
+      "name": "float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:float"
+    },
+    "double": {
+      "name": "double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:double"
+    },
+    "decimal": {
+      "name": "decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "xsd:decimal"
+    },
+    "time": {
+      "name": "time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date": {
+      "name": "date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time"
+      ],
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "xsd:date",
+      "repr": "str"
+    },
+    "datetime": {
+      "name": "datetime",
+      "description": "The combination of a date and time",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
+      "repr": "str"
+    },
+    "uriorcurie": {
+      "name": "uriorcurie",
+      "description": "a URI or a CURIE",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "URIorCURIE",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "curie": {
+      "name": "curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "Curie",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "uri": {
+      "name": "uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "ncname": {
+      "name": "ncname",
+      "description": "Prefix part of CURIE",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "NCName",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "objectidentifier": {
+      "name": "objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "comments": [
+        "Used for inheritence and type checking"
+      ],
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "ElementIdentifier",
+      "uri": "shex:iri",
+      "repr": "str"
+    },
+    "nodeidentifier": {
+      "name": "nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "base": "NodeIdentifier",
+      "uri": "shex:nonLiteral",
+      "repr": "str"
+    }
+  },
+  "slots": {
+    "id": {
+      "name": "id",
+      "description": "A unique identifier for a thing",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slot_uri": "schema:identifier",
+      "identifier": true,
+      "range": "uriorcurie",
+      "required": true,
+      "pattern": "[a-zA-Z0-9_]+:[a-zA-Z0-9_]+"
+    },
+    "name": {
+      "name": "name",
+      "description": "A human-readable name for a thing",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slot_uri": "schema:name"
+    },
+    "description": {
+      "name": "description",
+      "description": "A human-readable description for a thing",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slot_uri": "schema:description"
+    },
+    "has_input": {
+      "name": "has_input",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "range": "NamedThing",
+      "required": true
+    },
+    "has_output": {
+      "name": "has_output",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "range": "NamedThing",
+      "required": true
+    }
+  },
+  "classes": {
+    "NamedThing": {
+      "name": "NamedThing",
+      "description": "A generic grouping for any identifiable entity",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
+      "attributes": {
+        "id": {
+          "name": "id",
+          "description": "A unique identifier for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:identifier",
+          "identifier": true,
+          "alias": "id",
+          "owner": "NamedThing",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "uriorcurie",
+          "required": true,
+          "pattern": "[a-zA-Z0-9_]+:[a-zA-Z0-9_]+"
+        },
+        "name": {
+          "name": "name",
+          "description": "A human-readable name for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:name",
+          "alias": "name",
+          "owner": "NamedThing",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "string"
+        },
+        "description": {
+          "name": "description",
+          "description": "A human-readable description for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:description",
+          "alias": "description",
+          "owner": "NamedThing",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "string"
+        }
+      },
+      "class_uri": "schema:Thing"
+    },
+    "SampleOperations": {
+      "name": "SampleOperations",
+      "description": "Represents a SampleOperations",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "is_a": "NamedThing",
+      "attributes": {
+        "id": {
+          "name": "id",
+          "description": "A unique identifier for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:identifier",
+          "identifier": true,
+          "alias": "id",
+          "owner": "SampleOperations",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "uriorcurie",
+          "required": true,
+          "pattern": "[a-zA-Z0-9_]+:[a-zA-Z0-9_]+"
+        },
+        "name": {
+          "name": "name",
+          "description": "A human-readable name for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:name",
+          "alias": "name",
+          "owner": "SampleOperations",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "string"
+        },
+        "description": {
+          "name": "description",
+          "description": "A human-readable description for a thing",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "slot_uri": "schema:description",
+          "alias": "description",
+          "owner": "SampleOperations",
+          "domain_of": [
+            "NamedThing"
+          ],
+          "range": "string"
+        }
+      }
+    },
+    "SampleOperationsCollection": {
+      "name": "SampleOperationsCollection",
+      "description": "A holder for SampleOperations objects",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "attributes": {
+        "entries": {
+          "name": "entries",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "multivalued": true,
+          "alias": "entries",
+          "owner": "SampleOperationsCollection",
+          "domain_of": [
+            "SampleOperationsCollection"
+          ],
+          "range": "SampleOperations",
+          "inlined": true,
+          "inlined_as_list": true
+        }
+      },
+      "tree_root": true
+    }
+  },
+  "source_file": "src/minimal_metab/schema/minimal_metab.yaml",
+  "@type": "SchemaDefinition"
+}

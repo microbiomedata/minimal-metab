@@ -1,5 +1,5 @@
 # Auto generated from minimal_metab.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-08-02T16:54:41
+# Generation date: 2023-08-02T16:56:38
 # Schema: minimal_metab
 #
 # id: https://w3id.org/microbiomedata/minimal-metab

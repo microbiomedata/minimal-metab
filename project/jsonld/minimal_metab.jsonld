@@ -430,7 +430,7 @@
   "source_file": "minimal_metab.yaml",
   "source_file_date": "2023-08-02T16:26:15",
   "source_file_size": 1587,
-  "generation_date": "2023-08-02T16:54:35",
+  "generation_date": "2023-08-02T16:55:21",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/minimal_metab.context.jsonld",
