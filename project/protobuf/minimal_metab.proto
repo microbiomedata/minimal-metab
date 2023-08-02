@@ -11,8 +11,6 @@ message SampleOperations
   uriorcurie id = 0
   string name = 0
   string description = 0
-  namedThing hasInput = 0
-  namedThing hasOutput = 0
  }
 // A holder for SampleOperations objects
 message SampleOperationsCollection

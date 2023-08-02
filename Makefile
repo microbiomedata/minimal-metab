@@ -134,7 +134,10 @@ gen-project: $(PYMODEL)
 test: test-schema test-python test-examples
 
 test-schema:
-	$(RUN) gen-project ${GEN_PARGS} -d tmp $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-project ${GEN_PARGS} \
+		--exclude owl \
+		--exclude shacl \
+		-d tmp $(SOURCE_SCHEMA_PATH) && mv tmp/*.py $(PYMODEL)
 
 test-python:
 	$(RUN) python -m unittest discover
@@ -194,7 +197,8 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-PROJECT_FOLDERS = sqlschema shex shacl protobuf prefixmap owl jsonschema jsonld graphql excel
+# shacl owl issue #1
+PROJECT_FOLDERS = sqlschema shex  protobuf prefixmap jsonschema jsonld graphql excel
 git-init-add: git-init git-add git-commit git-status
 git-init:
 	git init

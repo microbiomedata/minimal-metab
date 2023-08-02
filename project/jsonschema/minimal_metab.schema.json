@@ -32,12 +32,6 @@
                     "description": "A human-readable description for a thing",
                     "type": "string"
                 },
-                "has_input": {
-                    "type": "string"
-                },
-                "has_output": {
-                    "type": "string"
-                },
                 "id": {
                     "description": "A unique identifier for a thing",
                     "pattern": "[a-zA-Z0-9_]+:[a-zA-Z0-9_]+",
@@ -49,8 +43,6 @@
                 }
             },
             "required": [
-                "has_input",
-                "has_output",
                 "id"
             ],
             "title": "SampleOperations",

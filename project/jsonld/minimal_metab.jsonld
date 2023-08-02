@@ -340,10 +340,6 @@
       "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_input",
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
       "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_input",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
       "range": "NamedThing",
       "required": true,
       "@type": "SlotDefinition"
@@ -353,10 +349,6 @@
       "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_output",
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
       "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_output",
-      "owner": "SampleOperations",
-      "domain_of": [
-        "SampleOperations"
-      ],
       "range": "NamedThing",
       "required": true,
       "@type": "SlotDefinition"
@@ -404,9 +396,7 @@
       "slots": [
         "id",
         "name",
-        "description",
-        "has_input",
-        "has_output"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/microbiomedata/minimal-metab/SampleOperations",
@@ -438,9 +428,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "minimal_metab.yaml",
-  "source_file_date": "2023-08-02T15:53:51",
-  "source_file_size": 1584,
-  "generation_date": "2023-08-02T15:54:31",
+  "source_file_date": "2023-08-02T16:26:15",
+  "source_file_size": 1587,
+  "generation_date": "2023-08-02T16:54:35",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/minimal_metab.context.jsonld",

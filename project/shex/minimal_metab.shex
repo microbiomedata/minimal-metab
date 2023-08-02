@@ -55,9 +55,7 @@ linkml:Sparqlpath xsd:string
 
 <SampleOperations> CLOSED {
     (  $<SampleOperations_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          <has_input> @<NamedThing> ;
-          <has_output> @<NamedThing>
+          rdf:type [ schema1:Thing ] ?
        ) ;
        rdf:type [ <SampleOperations> ]
     )

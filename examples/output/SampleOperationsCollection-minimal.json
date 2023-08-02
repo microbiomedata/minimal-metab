@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "id": "example:123",
+      "name": "abc",
+      "description": "abc"
+    }
+  ],
+  "@type": "SampleOperationsCollection"
+}

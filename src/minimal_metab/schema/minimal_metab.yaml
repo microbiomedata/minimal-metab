@@ -31,9 +31,9 @@ classes:
     is_a: NamedThing
     description: >-
       Represents a SampleOperations
-    slots:
-      - has_input
-      - has_output
+#    slots:
+#      - has_input
+#      - has_output
 
   SampleOperationsCollection:
     tree_root: true

@@ -1,5 +1,5 @@
 # Auto generated from minimal_metab.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-08-02T15:54:37
+# Generation date: 2023-08-02T16:54:41
 # Schema: minimal_metab
 #
 # id: https://w3id.org/microbiomedata/minimal-metab
@@ -93,24 +93,12 @@ class SampleOperations(NamedThing):
     class_model_uri: ClassVar[URIRef] = MINIMAL_METAB.SampleOperations
 
     id: Union[str, SampleOperationsId] = None
-    has_input: Union[str, NamedThingId] = None
-    has_output: Union[str, NamedThingId] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SampleOperationsId):
             self.id = SampleOperationsId(self.id)
-
-        if self._is_empty(self.has_input):
-            self.MissingRequiredField("has_input")
-        if not isinstance(self.has_input, NamedThingId):
-            self.has_input = NamedThingId(self.has_input)
-
-        if self._is_empty(self.has_output):
-            self.MissingRequiredField("has_output")
-        if not isinstance(self.has_output, NamedThingId):
-            self.has_output = NamedThingId(self.has_output)
 
         super().__post_init__(**kwargs)
 

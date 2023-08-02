@@ -10,8 +10,6 @@ type SampleOperations
     id: Uriorcurie!
     name: String
     description: String
-    hasInput: NamedThing!
-    hasOutput: NamedThing!
   }
 
 type SampleOperationsCollection
