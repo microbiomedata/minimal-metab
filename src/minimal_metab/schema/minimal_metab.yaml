@@ -1,9 +1,7 @@
----
 id: https://w3id.org/microbiomedata/minimal-metab
-name: minimal-metab
-title: minimal-metab
-description: |-
-  A LinkML cookiecutter repo for modelling metabolomics from the ground up
+name: minimal_metab
+title: minimal metabolomics LinkML model
+description: A LinkML cookiecutter repo for modelling metabolomics from the ground up
 license: MIT
 see_also:
   - https://microbiomedata.github.io/minimal-metab
@@ -11,10 +9,8 @@ see_also:
 prefixes:
   minimal_metab: https://w3id.org/microbiomedata/minimal-metab/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
-  schema: http://schema.org/
-  PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
+
 default_prefix: minimal_metab
 default_range: string
 
@@ -22,7 +18,6 @@ imports:
   - linkml:types
 
 classes:
-
   NamedThing:
     description: >-
       A generic grouping for any identifiable entity
@@ -37,13 +32,8 @@ classes:
     description: >-
       Represents a SampleOperations
     slots:
-      - primary_email
-#      - birth_date # DataHarmoizer is saving date-ranged data as datetimes
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      - has_input
+      - has_output
 
   SampleOperationsCollection:
     tree_root: true
@@ -70,35 +60,12 @@ slots:
   description:
     slot_uri: schema:description
     description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+  has_input:
+    range: NamedThing
+    required: true
+  has_output:
+    range: NamedThing
+    required: true
+
 
 enums:
-  PersonStatus:
-    notes:
-      - redundant text properties are currently required for building a DataHarmonizer menu
-    permissible_values:
-      ALIVE:
-        text: ALIVE
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        text: DEAD
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        text: UNKNOWN
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
