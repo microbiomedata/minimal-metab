@@ -71,11 +71,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/PersonStatus/</loc>
-         <lastmod>2023-08-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/minimal-metab/SampleOperations/</loc>
          <lastmod>2023-08-02</lastmod>
          <changefreq>daily</changefreq>
@@ -111,16 +106,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/age_in_years/</loc>
-         <lastmod>2023-08-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/birth_date/</loc>
-         <lastmod>2023-08-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/minimal-metab/description/</loc>
          <lastmod>2023-08-02</lastmod>
          <changefreq>daily</changefreq>
@@ -131,27 +116,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/minimal-metab/has_input/</loc>
+         <lastmod>2023-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/minimal-metab/has_output/</loc>
+         <lastmod>2023-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/minimal-metab/id/</loc>
          <lastmod>2023-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/minimal-metab/</loc>
+         <loc>https://microbiomedata.github.io/minimal-metab/minimal_metab/</loc>
          <lastmod>2023-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://microbiomedata.github.io/minimal-metab/name/</loc>
-         <lastmod>2023-08-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/primary_email/</loc>
-         <lastmod>2023-08-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/minimal-metab/vital_status/</loc>
          <lastmod>2023-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>

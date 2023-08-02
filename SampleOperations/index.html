@@ -211,19 +211,11 @@
     class SampleOperations
       NamedThing &lt;|-- SampleOperations
 
-      SampleOperations : age_in_years
-
       SampleOperations : description
 
       SampleOperations : id
 
       SampleOperations : name
-
-      SampleOperations : primary_email
-
-      SampleOperations : vital_status
-
-          SampleOperations --|&gt; PersonStatus : vital_status
 
 
 </div>
@@ -245,24 +237,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../primary_email/">primary_email</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The main email address of a person</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../age_in_years/">age_in_years</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Number of years since birth</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../vital_status/">vital_status</a></td>
-<td>0..1 <br/> <a href="../PersonStatus/">PersonStatus</a></td>
-<td>living or dead status</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
@@ -334,16 +308,6 @@
 description: Represents a SampleOperations
 from_schema: https://w3id.org/microbiomedata/minimal-metab
 is_a: NamedThing
-slots:
-- primary_email
-- age_in_years
-- vital_status
-slot_usage:
-  primary_email:
-    name: primary_email
-    domain_of:
-    - SampleOperations
-    pattern: ^\S+@[\S+\.]+\S+
 
 </code></pre>
 </details>
@@ -353,45 +317,7 @@ slot_usage:
 description: Represents a SampleOperations
 from_schema: https://w3id.org/microbiomedata/minimal-metab
 is_a: NamedThing
-slot_usage:
-  primary_email:
-    name: primary_email
-    domain_of:
-    - SampleOperations
-    pattern: ^\S+@[\S+\.]+\S+
 attributes:
-  primary_email:
-    name: primary_email
-    description: The main email address of a person
-    from_schema: https://w3id.org/microbiomedata/minimal-metab
-    rank: 1000
-    slot_uri: schema:email
-    alias: primary_email
-    owner: SampleOperations
-    domain_of:
-    - SampleOperations
-    range: string
-    pattern: ^\S+@[\S+\.]+\S+
-  age_in_years:
-    name: age_in_years
-    description: Number of years since birth
-    from_schema: https://w3id.org/microbiomedata/minimal-metab
-    rank: 1000
-    alias: age_in_years
-    owner: SampleOperations
-    domain_of:
-    - SampleOperations
-    range: integer
-  vital_status:
-    name: vital_status
-    description: living or dead status
-    from_schema: https://w3id.org/microbiomedata/minimal-metab
-    rank: 1000
-    alias: vital_status
-    owner: SampleOperations
-    domain_of:
-    - SampleOperations
-    range: PersonStatus
   id:
     name: id
     description: A unique identifier for a thing
