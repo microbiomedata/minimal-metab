@@ -1,0 +1,7 @@
+---
+name: minimal_metab
+author: James Tessmer <james.tessmer@pnnl.gov>
+description: A LinkML cookiecutter repo for modelling metabolomics from the ground up
+source_schema_path: src/minimal_metab/schema/minimal_metab.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums

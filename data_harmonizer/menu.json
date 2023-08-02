@@ -1,0 +1,9 @@
+{
+  "minimal_metab": {
+    "Person": {
+      "name": "Person",
+      "status": "published",
+      "display": true
+    }
+  }
+}
