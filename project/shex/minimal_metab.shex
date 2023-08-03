@@ -5,6 +5,8 @@ PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
 
 
+<Unit> xsd:string
+
 linkml:String xsd:string
 
 linkml:Integer xsd:integer
@@ -43,6 +45,16 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
+<AttributeValue>  (
+    CLOSED {
+       (  $<AttributeValue_tes> (  <has_raw_value> @linkml:String ? ;
+             <type> @linkml:String ?
+          ) ;
+          rdf:type [ <AttributeValue> ] ?
+       )
+    } OR @<QuantityValue>
+)
+
 <NamedThing>  (
     CLOSED {
        (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
@@ -52,6 +64,17 @@ linkml:Sparqlpath xsd:string
        )
     } OR @<SampleOperations>
 )
+
+<QuantityValue> CLOSED {
+    (  $<QuantityValue_tes> (  &<AttributeValue_tes> ;
+          rdf:type [ <AttributeValue> ] ? ;
+          <has_unit> @<Unit> ? ;
+          <has_numeric_value> @linkml:Double ? ;
+          <has_raw_value> @linkml:String ?
+       ) ;
+       rdf:type [ <QuantityValue> ] ?
+    )
+}
 
 <SampleOperations> CLOSED {
     (  $<SampleOperations_tes> (  &<NamedThing_tes> ;

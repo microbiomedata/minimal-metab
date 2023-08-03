@@ -1,5 +1,17 @@
 {
     "$defs": {
+        "AttributeValue": {
+            "additionalProperties": false,
+            "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+            "properties": {
+                "has_raw_value": {
+                    "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+                    "type": "string"
+                }
+            },
+            "title": "AttributeValue",
+            "type": "object"
+        },
         "NamedThing": {
             "additionalProperties": false,
             "description": "A generic grouping for any identifiable entity",
@@ -22,6 +34,26 @@
                 "id"
             ],
             "title": "NamedThing",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "A simple quantity, e.g. 2cm",
+            "properties": {
+                "has_numeric_value": {
+                    "description": "The number part of the quantity",
+                    "type": "number"
+                },
+                "has_raw_value": {
+                    "description": "Unnormalized atomic string representation, should in syntax {number} {unit}",
+                    "type": "string"
+                },
+                "has_unit": {
+                    "description": "The unit of the quantity",
+                    "type": "string"
+                }
+            },
+            "title": "QuantityValue",
             "type": "object"
         },
         "SampleOperations": {

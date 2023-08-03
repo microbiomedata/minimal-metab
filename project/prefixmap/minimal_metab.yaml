@@ -1,7 +1,9 @@
 {
+   "UO": "http://purl.obolibrary.org/obo/UO_",
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "minimal_metab": "https://w3id.org/microbiomedata/minimal-metab/",
+   "qud": "http://qudt.org/1.1/schema/qudt#",
    "schema": "http://schema.org/",
    "NamedThing": {
       "@id": "schema:Thing"

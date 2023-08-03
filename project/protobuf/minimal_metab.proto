@@ -1,9 +1,23 @@
+// The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value
+message AttributeValue
+ {
+  string hasRawValue = 0
+  string type = 0
+ }
 // A generic grouping for any identifiable entity
 message NamedThing
  {
   uriorcurie id = 0
   string name = 0
   string description = 0
+ }
+// A simple quantity, e.g. 2cm
+message QuantityValue
+ {
+  string type = 0
+  unit hasUnit = 0
+  double hasNumericValue = 0
+  string hasRawValue = 0
  }
 // Represents a SampleOperations
 message SampleOperations

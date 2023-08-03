@@ -22,11 +22,31 @@
     {
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "qud",
+      "prefix_reference": "http://qudt.org/1.1/schema/qudt#"
+    },
+    {
+      "prefix_prefix": "UO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/UO_"
     }
   ],
   "default_prefix": "minimal_metab",
   "default_range": "string",
   "types": [
+    {
+      "name": "unit",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/Unit",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "qud:Unit",
+        "UO:0000000"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
     {
       "name": "string",
       "definition_uri": "https://w3id.org/linkml/String",
@@ -354,6 +374,57 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "has_raw_value",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_raw_value",
+      "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "domain": "AttributeValue",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_raw_value",
+      "owner": "AttributeValue",
+      "domain_of": [
+        "AttributeValue"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_unit",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_unit",
+      "description": "Links a QuantityValue to a unit",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "aliases": [
+        "scale"
+      ],
+      "mappings": [
+        "http://qudt.org/1.1/schema/qudt#unit",
+        "http://schema.org/unitCode"
+      ],
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "unit",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_numeric_value",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_numeric_value",
+      "description": "Links a quantity value to a number",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "http://qudt.org/1.1/schema/qudt#quantityValue",
+        "http://schema.org/value"
+      ],
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "sampleOperationsCollection__entries",
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
       "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/entries",
@@ -366,6 +437,96 @@
       "range": "SampleOperations",
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type",
+      "description": "An optional string that specified the type of object.",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/type",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AttributeValue_type",
+      "description": "An optional string that specified the type of object.",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "is_a": "type",
+      "domain": "AttributeValue",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/type",
+      "alias": "type",
+      "owner": "AttributeValue",
+      "domain_of": [
+        "AttributeValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_has_raw_value",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_raw_value",
+      "description": "Unnormalized atomic string representation, should in syntax {number} {unit}",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "is_a": "has_raw_value",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_raw_value",
+      "alias": "has_raw_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_raw_value",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_has_unit",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_unit",
+      "description": "The unit of the quantity",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "aliases": [
+        "scale"
+      ],
+      "mappings": [
+        "http://qudt.org/1.1/schema/qudt#unit",
+        "http://schema.org/unitCode"
+      ],
+      "is_a": "has_unit",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_unit",
+      "alias": "has_unit",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_unit",
+      "range": "unit",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantityValue_has_numeric_value",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/has_numeric_value",
+      "description": "The number part of the quantity",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "http://qudt.org/1.1/schema/qudt#quantityValue",
+        "http://schema.org/value"
+      ],
+      "is_a": "has_numeric_value",
+      "domain": "QuantityValue",
+      "slot_uri": "https://w3id.org/microbiomedata/minimal-metab/has_numeric_value",
+      "alias": "has_numeric_value",
+      "owner": "QuantityValue",
+      "domain_of": [
+        "QuantityValue"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_numeric_value",
+      "range": "double",
       "@type": "SlotDefinition"
     }
   ],
@@ -403,6 +564,38 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "AttributeValue",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/AttributeValue",
+      "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slots": [
+        "has_raw_value",
+        "AttributeValue_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/microbiomedata/minimal-metab/AttributeValue",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityValue",
+      "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/QuantityValue",
+      "description": "A simple quantity, e.g. 2cm",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "schema:QuantityValue"
+      ],
+      "is_a": "AttributeValue",
+      "slots": [
+        "AttributeValue_type",
+        "QuantityValue_has_unit",
+        "QuantityValue_has_numeric_value",
+        "QuantityValue_has_raw_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/microbiomedata/minimal-metab/QuantityValue",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "SampleOperationsCollection",
       "definition_uri": "https://w3id.org/microbiomedata/minimal-metab/SampleOperationsCollection",
       "description": "A holder for SampleOperations objects",
@@ -428,9 +621,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "minimal_metab.yaml",
-  "source_file_date": "2023-08-02T16:26:15",
-  "source_file_size": 1587,
-  "generation_date": "2023-08-02T16:55:21",
+  "source_file_date": "2023-08-02T19:56:20",
+  "source_file_size": 3214,
+  "generation_date": "2023-08-02T19:56:30",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/minimal_metab.context.jsonld",
