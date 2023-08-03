@@ -20,6 +20,14 @@
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
     },
+    "qud": {
+      "prefix_prefix": "qud",
+      "prefix_reference": "http://qudt.org/1.1/schema/qudt#"
+    },
+    "UO": {
+      "prefix_prefix": "UO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/UO_"
+    },
     "xsd": {
       "prefix_prefix": "xsd",
       "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
@@ -36,6 +44,16 @@
   "default_prefix": "minimal_metab",
   "default_range": "string",
   "types": {
+    "unit": {
+      "name": "unit",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "qud:Unit",
+        "UO:0000000"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
     "string": {
       "name": "string",
       "description": "A character string",
@@ -242,6 +260,38 @@
       "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
       "range": "NamedThing",
       "required": true
+    },
+    "has_raw_value": {
+      "name": "has_raw_value",
+      "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "domain": "AttributeValue",
+      "multivalued": false,
+      "range": "string"
+    },
+    "has_unit": {
+      "name": "has_unit",
+      "description": "Links a QuantityValue to a unit",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "aliases": [
+        "scale"
+      ],
+      "mappings": [
+        "qud:unit",
+        "schema:unitCode"
+      ],
+      "range": "unit"
+    },
+    "has_numeric_value": {
+      "name": "has_numeric_value",
+      "description": "Links a quantity value to a number",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "qud:quantityValue",
+        "schema:value"
+      ],
+      "multivalued": false,
+      "range": "float"
     }
   },
   "classes": {
@@ -339,6 +389,110 @@
           "owner": "SampleOperations",
           "domain_of": [
             "NamedThing"
+          ],
+          "range": "string"
+        }
+      }
+    },
+    "AttributeValue": {
+      "name": "AttributeValue",
+      "description": "The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "slots": [
+        "has_raw_value"
+      ],
+      "slot_usage": {
+        "type": {
+          "name": "type",
+          "description": "An optional string that specified the type of object."
+        }
+      },
+      "attributes": {
+        "has_raw_value": {
+          "name": "has_raw_value",
+          "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "domain": "AttributeValue",
+          "multivalued": false,
+          "alias": "has_raw_value",
+          "owner": "AttributeValue",
+          "domain_of": [
+            "AttributeValue"
+          ],
+          "range": "string"
+        }
+      }
+    },
+    "QuantityValue": {
+      "name": "QuantityValue",
+      "description": "A simple quantity, e.g. 2cm",
+      "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+      "mappings": [
+        "schema:QuantityValue"
+      ],
+      "is_a": "AttributeValue",
+      "slots": [
+        "has_unit",
+        "has_numeric_value"
+      ],
+      "slot_usage": {
+        "has_raw_value": {
+          "name": "has_raw_value",
+          "description": "Unnormalized atomic string representation, should in syntax {number} {unit}",
+          "domain_of": [
+            "AttributeValue"
+          ]
+        },
+        "has_unit": {
+          "name": "has_unit",
+          "description": "The unit of the quantity",
+          "domain_of": [
+            "QuantityValue"
+          ]
+        },
+        "has_numeric_value": {
+          "name": "has_numeric_value",
+          "description": "The number part of the quantity",
+          "domain_of": [
+            "QuantityValue"
+          ],
+          "range": "double"
+        }
+      },
+      "attributes": {
+        "has_unit": {
+          "name": "has_unit",
+          "description": "The unit of the quantity",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "alias": "has_unit",
+          "owner": "QuantityValue",
+          "domain_of": [
+            "QuantityValue"
+          ],
+          "range": "unit"
+        },
+        "has_numeric_value": {
+          "name": "has_numeric_value",
+          "description": "The number part of the quantity",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "multivalued": false,
+          "alias": "has_numeric_value",
+          "owner": "QuantityValue",
+          "domain_of": [
+            "QuantityValue"
+          ],
+          "range": "double"
+        },
+        "has_raw_value": {
+          "name": "has_raw_value",
+          "description": "Unnormalized atomic string representation, should in syntax {number} {unit}",
+          "from_schema": "https://w3id.org/microbiomedata/minimal-metab",
+          "domain": "AttributeValue",
+          "multivalued": false,
+          "alias": "has_raw_value",
+          "owner": "QuantityValue",
+          "domain_of": [
+            "AttributeValue"
           ],
           "range": "string"
         }

@@ -10,6 +10,8 @@ prefixes:
   minimal_metab: https://w3id.org/microbiomedata/minimal-metab/
   linkml: https://w3id.org/linkml/
   example: https://example.org/
+  qud: http://qudt.org/1.1/schema/qudt#
+  UO: http://purl.obolibrary.org/obo/UO_
 
 default_prefix: minimal_metab
 default_range: string
@@ -31,9 +33,42 @@ classes:
     is_a: NamedThing
     description: >-
       Represents a SampleOperations
-#    slots:
-#      - has_input
-#      - has_output
+  #    slots:
+  #      - has_input
+  #      - has_output
+
+  AttributeValue:
+    description: >-
+      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
+      value and the structured value
+    slots:
+      - has_raw_value
+    slot_usage:
+      type:
+        description: >-
+          An optional string that specified the type of object.
+
+  QuantityValue:
+    is_a: AttributeValue
+    description: >-
+      A simple quantity, e.g. 2cm
+    slots:
+      - has_unit
+      - has_numeric_value
+    slot_usage:
+      has_raw_value:
+        description: >-
+          Unnormalized atomic string representation, should in syntax {number} {unit}
+      has_unit:
+        description: >-
+          The unit of the quantity
+      has_numeric_value:
+        description: >-
+          The number part of the quantity
+        range:
+          double
+    mappings:
+      - schema:QuantityValue
 
   SampleOperationsCollection:
     tree_root: true
@@ -66,6 +101,40 @@ slots:
   has_output:
     range: NamedThing
     required: true
+  has_raw_value:
+    description: >-
+      The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    multivalued: false
+    domain: AttributeValue
+    range: string
+  has_unit:
+    required: true
+    description: >-
+      Links a QuantityValue to a unit
+    aliases:
+      - scale
+    range: unit
+    mappings:
+      - qud:unit
+      - schema:unitCode
+  has_numeric_value:
+    required: true
+    description: >-
+      Links a quantity value to a number
+    multivalued: false
+    range: float
+    mappings:
+      - qud:quantityValue
+      - schema:value
 
 
-enums:
+enums: { }
+
+
+types:
+  unit:
+    base: str
+    uri: xsd:string
+    mappings:
+      - qud:Unit
+      - UO:0000000

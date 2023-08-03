@@ -13,6 +13,13 @@ entries:
   name: abc
 
 ```
+## QuantityValue-minimal
+### Input
+```yaml
+has_numeric_value: 50
+has_unit: g
+
+```
 ## SampleOperationsCollection-minimal-plus
 ### Input
 ```yaml

@@ -1,8 +1,22 @@
+type AttributeValue
+  {
+    hasRawValue: String
+    type: String
+  }
+
 type NamedThing
   {
     id: Uriorcurie!
     name: String
     description: String
+  }
+
+type QuantityValue
+  {
+    type: String
+    hasUnit: Unit
+    hasNumericValue: Double
+    hasRawValue: String
   }
 
 type SampleOperations

@@ -1,0 +1,7 @@
+@prefix minimal_metab: <https://w3id.org/microbiomedata/minimal-metab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a minimal_metab:QuantityValue ;
+    minimal_metab:has_numeric_value 5e+01 ;
+    minimal_metab:has_unit "g" .
+
