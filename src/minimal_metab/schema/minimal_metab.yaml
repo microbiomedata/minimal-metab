@@ -81,6 +81,16 @@ classes:
         inlined: true
         inlined_as_list: true
 
+  AnalyteStorage:
+    is_a: SampleOperations
+    description: >-
+      Information about storing a sample including volume, temperature, and the storage container.
+    slots:
+      - analyte_volume
+      - temp
+      - container_type
+
+
 slots:
   id:
     description: A unique identifier for a thing
@@ -126,6 +136,19 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
+
+  temp:
+    range: QuantityValue
+    description: >-
+      A temperature, given in Fahrentheit or Celsius.
+  analyte_volume:
+    range: QuantityValue
+    description: >-
+      The volume of an analyte used, stored, or prepared.
+  container_type:
+    range: string
+    description: >-
+      A type of container. i.e. test tube, falcon tube, etc.
 
 
 enums: { }
