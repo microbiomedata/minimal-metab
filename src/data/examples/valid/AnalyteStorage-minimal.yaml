@@ -7,4 +7,4 @@ analyte_volume:
   has_raw_value: '30 mL'
   has_numeric_value: 30
   has_unit: 'mL'
-container_type: 'test tube'
+container_type: 'Falcon tube'
